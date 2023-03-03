@@ -100,9 +100,6 @@ function Stopwatch({ startCapture }) {
     }, 10);
   };
 
-  // const saveTime = sessionStore
-  // console.log(sessionStore,"save--")
-
   const stopTimer = () => {
     setTimerOn(false);
 
@@ -147,13 +144,20 @@ function Stopwatch({ startCapture }) {
       return null
     }
   }
+
+  const currentDay = new Date().toLocaleDateString('en-us', { weekday:"long"});
+  // console.info(nn)
+
   // console.log(formatTime(expTimer),"exx--")
 
   // console.log(formatTime(1 * 30 * 1000))
 
   return (
     <>
+    {
+      !expTimer &&
       <button onClick={startSession}>Start session</button>
+    }
       5days time
       <div>
         {formatExpirationTimer(expTimer)}
@@ -185,7 +189,7 @@ function Stopwatch({ startCapture }) {
                   {formatTime(time)}
                 </Text>
                 <Text style={{ fontSize: '18px', marginBottom: '5px' }}>
-                  Today (fri UTC)
+                {`Today (${currentDay})`}
                 </Text>
                 <Text
                   style={{
